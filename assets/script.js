@@ -33,10 +33,15 @@ right_slide.addEventListener('click', () => {
 
 // Ajout des bullet points au slider
 const dots = document.querySelector('.dots');
-const dot_list = document.querySelector('.dot');
 
 for (let i = 0; i < slides.length; i++) {
 	const dot = document.createElement('div');
 	dot.className = 'dot';
 	dots.appendChild(dot);
+}
+
+// Ajout de la class dot_selected au premier point
+const dot_list = document.querySelectorAll('.dot');
+if (dot_list.length > 0) {
+	dot_list[0].classList.add('dot_selected');
 }
