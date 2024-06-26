@@ -18,24 +18,25 @@ const slides = [
 	},
 ];
 
-// Création variable pour faire tourner le tableau
-let index_slides = 0;
+// Récupération des deux flèches (gauche et droite)
+const left_slide = document.querySelector('.arrow_left');
+const right_slide = document.querySelector('.arrow_right');
 
-// Récupération de l'élément banner, des images
-let banner = document.getElementById('banner');
-let banner_img = document.getElementsByClassName('banner-img');
-
-console.log('banner_img');
-
-// Récupération de la flèche de gauche
-const left_slide = document.getElementsByClassName('arrow_left');
-
-// Ajout de l'évènement au click
-left_slide[0].addEventListener('click', () => {
-	if (index_slides > 0) {
-		index_slides = index_slides - 1;
-	} else {
-		index_slides = slides.length - 1;
-	}
-	console.log(`index_slides: ${index_slides}`);
+// Ajout d'un évènement au click
+left_slide.addEventListener('click', () => {
+	console.log('coucou flèche de gauche');
 });
+
+right_slide.addEventListener('click', () => {
+	console.log('coucou flèche de droite');
+});
+
+// Ajout des bullet points au slider
+const dots = document.querySelector('.dots');
+const dot_list = document.querySelector('.dot');
+
+for (let i = 0; i < slides.length; i++) {
+	const dot = document.createElement('div');
+	dot.className = 'dot';
+	dots.appendChild(dot);
+}
