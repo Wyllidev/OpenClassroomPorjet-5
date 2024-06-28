@@ -45,3 +45,28 @@ const dot_list = document.querySelectorAll('.dot');
 if (dot_list.length > 0) {
 	dot_list[0].classList.add('dot_selected');
 }
+
+// Création variable pour indiquer que lorsqu'on arrive sur la page l'index du carrousel est au début
+let index = 0;
+
+// Sélection des images et du texte du carrousel
+const carouselImage = document.querySelector('.banner-img');
+let carouselTagline = banner.getElementsByTagName('p')[0];
+
+// Fonction pour mettre à jour l'image et le texte du carrousel
+function updateCarousel() {
+	// Mise à jour de l'image
+	carouselImage.src = 'assets/images/slideshow/' + slides[index].image;
+	// Mise à jour du texte
+	carouselTagline.innerHTML = slides[index].tagLine;
+}
+
+// Evènement au clic sur les flèches
+left_slide.addEventListener('click', () => {
+	if (index >= slides.length - 1) {
+		index = 0;
+	} else {
+		index = index + 1;
+	}
+	updateCarousel(index);
+});
