@@ -51,7 +51,7 @@ let index = 0;
 
 // Sélection des images et du texte du carrousel
 const carouselImage = document.querySelector('.banner-img');
-let carouselTagline = banner.getElementsByTagName('p')[0];
+let carouselTagline = document.querySelector('.banner-text');
 
 // Fonction pour mettre à jour l'image et le texte du carrousel
 function updateCarousel() {
@@ -59,6 +59,11 @@ function updateCarousel() {
 	carouselImage.src = 'assets/images/slideshow/' + slides[index].image;
 	// Mise à jour du texte
 	carouselTagline.innerHTML = slides[index].tagLine;
+	// Roulement des Bullet Points
+	for (let dot_index = 0; dot_index < dot_list.length; dot_index++) {
+		dot_list[dot_index].classList.remove('dot_selected');
+	}
+	dot_list[index].classList.add('dot_selected');
 }
 
 // Evènement au clic sur les flèches
@@ -69,4 +74,13 @@ left_slide.addEventListener('click', () => {
 		index = index + 1;
 	}
 	updateCarousel(index);
+});
+
+right_slide.addEventListener('click', () => {
+	if (index <= 0) {
+		index = slides.length - 1;
+	} else {
+		index = index - 1;
+	}
+	updateCarousel();
 });
